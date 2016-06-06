@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*- 
+
+d = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
+d['alex'] = 78      # 加入key
+d['alex'] = 88      # 改变value
+’apple‘ in d        # 判断’apple‘是否在d中
+d.get ('apple', x)     #如果apple在d中，return 自己定义的值x，否则返回value
+d.pop ('bob')       # 删除元素
