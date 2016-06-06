@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*- 
+
+#函数的参数可变: 1,list或者tuple; 2,定义参数前面加*,传参就可以传任意个
+
+def cal (numbles):
+    sum = 0
+    for x in numbles:
+        sum += x
+    return sum
+print (cal([1, 10, 3, 2]))
+print (cal((1, 2, 3)))
+
+
+def cal1 (*numble):
+    sum = 0
+    for x in numble:
+        sum += x
+    return sum
+print (cal1(1, 2, 3))
+print (cal1(1, 2, 3, 4))
+
+# 在list或者tuple之前加*，可以把list或者tuple内的元素变成可变参数传递
+L = [1, 2, 3, 4]
+print (cal1(*L))
+
+
+
+# 关键字参数: 允许传入任意个含参数名的参数
+def person (name, age, **other):
+    print ('name:', name, 'age:', age, 'other:', other)
+
+extra = {'city':'zhengzhou', 'job':'chinese'}
+person ('regina', 21, **extra)
+person ('jack', 21, city='zhengzhou')
+
+
+
+# 命名关键字参数: 限制关键字参数的名字,(要*与正常的参数区分)
+# 有可变参数不需要*区分
+def Person (name, age, *, city, job):
+    print (name, age, city, job)
+Person ('alex', 21, city='zhenzghou', job='chinese')
+Person ('alex', 21, job = 'chinese', city = 'zhengzhou')
+
+# 参数混合使用顺序:必选参数,默认参数,可变参数,命名关键字参数和关键字参数
+# 参数组合
+# 使用tuple和dict调用函数
+def f (a, b, c=0, *args, **kw):
+    print ('a=', a, 'b=', b, 'c=', c, 'args=', args, 'kw=', kw)
+
+a = [1, 2, 3, 4]
+b = {'d':1, 'sum':100}
+f(*a, **b)
