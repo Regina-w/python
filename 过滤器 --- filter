@@ -1,0 +1,12 @@
+# filter 过滤器: 把函数依次作用于每一个元素
+# 然后根据返回值确定是保留该元素还是遗弃
+
+# 删除序列中偶数
+def is_odd(n):
+	return n % 2
+
+L = [1, 2, 3, 4, 5, 6, 7]
+l = filter (is_odd, L)
+
+for x in l:
+	print (x)
