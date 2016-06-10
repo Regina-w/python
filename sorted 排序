@@ -1,0 +1,19 @@
+# sorted 排序: python 排序是稳定的, 
+# 当key键相同时, 按照原来的序列
+# sorted 排序不会改变list, 会产生一个新的list
+# sorted (data, key, reverse)
+
+L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+
+def by_name1(t):
+	return t[0]
+
+def by_name2 (t):
+	return t[1]
+	
+l2 = sorted (L, key=by_name1) # sort by name
+l3 = sorted (L, key=by_name2) # sort by age
+l4 = sorted (L, key=by_name2, reverse = True) # sort by age
+print ('sort by name: ', l2)
+print ('sort by age: ', l3)
+print ('sort by age: ', l4)
