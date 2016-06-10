@@ -1,0 +1,44 @@
+# Decorator 装饰器: 在代码运行期间动态增加功能的方式
+
+import functools
+
+# log 装饰器, 参数为一个函数名, 返回一个函数
+def log (func):
+	@functools.wraps(func)
+	def wrapper (*args, **kw):
+		print ('call %s():' % func.__name__)
+		return func (*args, **kw)
+	return wrapper
+	
+	
+# 把@log 置于函数定义处 相当于 now = log(now)
+@log
+def now ():
+	print ('2016-6-10')
+	
+	
+# now()函数依然存在, 但是出现了now变量指向新函数
+# 调用now() 首先打印日志，然后调用原始函数
+now()
+
+# decorator 需要传入参数
+def decorator (text):
+	def log (func):
+		@functools.wraps(func)
+		def wrapper (*args, **kw):
+			print ('%s %s():' % (text, func.__name__))
+			return func (*args, **kw)
+		return wrapper
+	return log
+	
+	
+# 把@decorator('execute') 置于函数定义处 相当于 now = decorator('execute')(now)
+@decorator('execute')
+def now ():
+	print ('2016-6-10')
+	
+	
+now()
+
+# 经过装饰后的now, 它的属性now.__name__将会改变
+print (now.__name__)
