@@ -1,0 +1,11 @@
+# lambda 匿名函数: 传入函数时，不需要显式地定义函数
+# lambda 只能有一个表达式, 不能写return
+# 可以赋值给变量，利用变量来调用
+
+# lambda x : x * x 相当于  def f(x):	return x * x
+
+L = list (map (lambda x : x * x, range(1,11)))
+print (L)
+
+
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
