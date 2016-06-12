@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+' a test OI '
+
+__author__ = 'regina'
+
+# 写文件
+with open ('test.txt', 'w') as f:
+	f.write ('i am regina\n')
+	f.write ('nice to meet you')
+f.close()
+
+# 读取文件
+with open ('test.txt', 'r') as f:
+	print (f.read())
+f.close()
+
+# 从内存中读取string  StringIO
+from io import StringIO
+f = StringIO ()
+f.write ('Hi!\nhello!\ngoodbey!')
+print (f.getvalue())
+
+s = f.readlines()
+print (s)
+
+# 从内存中读取bytes  BytesIO
+from io import BytesIO
+f = BytesIO ()
+f.write ('中文'.encode('utf-8'))
+print (f.getvalue())
