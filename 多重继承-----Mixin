@@ -1,0 +1,29 @@
+# 多重继承 Mixin
+class Animal (object):
+    pass
+
+class Mammal (Animal):
+    pass
+
+class Bird (Animal):
+    pass
+
+class Dog (Mammal, Mrun_Mixin):
+    pass
+
+class Bat (Mammal, Mfly_Mixin):
+    pass
+
+class Parrot (Bird, Mfly_Mixin):
+    pass
+
+class Ostrich (Bird, Mfly_Mixin):
+    pass
+
+class Mrun_Mixin (object):
+    def run (self):
+        print 'running...'
+
+class Mfly_Mixin (object):
+    def run (self):
+        print 'flying...'
