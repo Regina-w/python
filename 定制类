@@ -1,0 +1,59 @@
+# 定制类
+
+# __iter__ 循环遍历
+# __iter__ 返回一个迭代对象, 然后不断调用迭代对象的next()返回下一个值
+class Fib (object):
+    def __init__ (self):
+        self.a, self.b = 0, 1   # 初始化两个计数器
+    
+    def __iter__(self):     #实例本身就是迭代对象，故返回自己
+        return self
+
+    def next(self):
+        self.a, self.b = self.b, self.a + self.b
+        if self.a > 100:    #退出条件
+            raise StopIteration();
+        return self.a       #返回下一个值
+
+for n in Fib():
+    print n
+
+# __getitem__ 对序列进行 下标 或者 切片方式 访问
+class Fib (object):
+    def __getitem__ (self, n):
+        if isinstance (n, int):
+            a, b = 1, 1
+            for x in range(n):
+                a, b = b, a + b
+            return a
+        if isinstance (n, slice):
+            start = n.start
+            stop = n.stop
+            L = []
+            a, b = 1, 1
+            for x in range(stop):
+                if x >= start:
+                    L.append(a)
+                a, b = b, a + b
+            return L
+
+# 访问到不存在属性，动态返回一个属性
+# 如果在__getattr__中找不到，返回默认值None, 或者自定义抛出错误
+# 例如 score
+class Student (object):
+    def __init__ (self):
+        self.name = 'regina'
+    def __getattr__ (self, attr):
+        if attr == 'score':
+            return 99
+        raise AttributeError ("'Student'object has no sttribute '%s'" % attr)
+
+s = Student()
+print (s.name)
+print (s.score)
+print (s.age)
+
+
+
+# __call__ 
+# 一个对象实例有自己的方法和属性,当调用实例方法时,可以直接调用在实例本身上
